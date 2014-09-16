@@ -90,6 +90,7 @@ public class Grille extends Environnement {
      */
     public void removeCreature(Creature creature) {
         removeAgent(creature);
+        grille[creature.getX()][creature.getY()] = null;
         creature.killOne();
         creature = null;
         
@@ -156,7 +157,7 @@ public class Grille extends Environnement {
         for (int l = 0; l < w; l++) {
             for (int c = 0; c < h; c++) {
                 if (alea.nextInt(10) < 7) {
-                    if (alea.nextInt(100) < 5) {
+                    if (alea.nextInt(100) < 10) {
                         addCreature(new Requin(), c, l);
                     } else {
                         addCreature(new Poisson(), c, l);

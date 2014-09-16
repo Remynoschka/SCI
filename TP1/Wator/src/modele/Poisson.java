@@ -4,6 +4,9 @@
  */
 package modele;
 
+import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -52,6 +55,7 @@ public class Poisson extends Creature {
             movY = alea.nextInt(3)-1;
             coordUsed = new boolean[3][3];
             allUsed = false;
+            List<Point> points = new ArrayList<>(); 	
             coordUsed[movX+1][movY+1] = true;
             while (!((Grille)this.getEnvironnement()).isReachable(this.getX() +movX, this.getY()+movY) && !allUsed){
                 movX = alea.nextInt(3)-1;
