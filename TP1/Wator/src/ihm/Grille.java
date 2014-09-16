@@ -16,14 +16,14 @@ import modele.Creature;
  */
 public class Grille extends javax.swing.JPanel {
 
-    private static final int CASE_SIZE = 20;
+    private static final int CASE_SIZE = 10;
     private modele.Grille grille;
 
     /**
      * Creates new form Grille
      */
-    public Grille(/*modele.Grille grille*/) {
-        this.grille = grille;
+    public Grille(modele.Grille grille) {
+       this.grille = grille;
         initComponents();
         setPreferredSize(new Dimension(grille.getH() * CASE_SIZE, grille.getW() * CASE_SIZE));
     }
@@ -33,7 +33,7 @@ public class Grille extends javax.swing.JPanel {
         setPreferredSize(new Dimension(grille.getH() * CASE_SIZE, grille.getW() * CASE_SIZE));
         this.setSize(getPreferredSize());
     }
-/*
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -53,11 +53,12 @@ public class Grille extends javax.swing.JPanel {
                 case REQUIN:
                     g.setColor(new Color(134, 34, 34));
                     break;
+                    default: g.setColor(Color.WHITE);
             }
             g.fillOval(((Creature) a).getX() * CASE_SIZE + CASE_SIZE / 4, ((Creature) a).getY() * CASE_SIZE + CASE_SIZE / 4, CASE_SIZE / 2, CASE_SIZE / 2);
         }
     }
-*/
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

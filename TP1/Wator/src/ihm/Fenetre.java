@@ -34,6 +34,7 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grillePanel = new ihm.Grille(grille);
         jMenuBar1 = new javax.swing.JMenuBar();
         environnementMenu = new javax.swing.JMenu();
         newGridMenuItem = new javax.swing.JMenuItem();
@@ -44,6 +45,17 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Poissons et Requins");
+
+        javax.swing.GroupLayout grillePanelLayout = new javax.swing.GroupLayout(grillePanel);
+        grillePanel.setLayout(grillePanelLayout);
+        grillePanelLayout.setHorizontalGroup(
+            grillePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        grillePanelLayout.setVerticalGroup(
+            grillePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
 
         environnementMenu.setText("Environnement");
 
@@ -87,6 +99,17 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
 
         setJMenuBar(jMenuBar1);
 
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(grillePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(grillePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -101,7 +124,9 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
             System.out.println("Changement Grille");
             this.grille = new modele.Grille(m.getHauteur(), m.getLargeur());
             this.grille.generateRandomCreaturePlacement();
-           // this.grillePanel.setGrille(grille);
+            this.grille.addObserver(this);
+            modele.Grille.GRILLE = this.grille;
+            this.grillePanel.setGrille(grille);
             pack();
             
             repaint();
@@ -120,6 +145,7 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenu affichageMenu;
     private javax.swing.JMenu environnementMenu;
     private javax.swing.JMenuItem graphePopMenuItem;
+    private ihm.Grille grillePanel;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem newGridMenuItem;
     private javax.swing.JMenuItem pyramideMenuItem;
