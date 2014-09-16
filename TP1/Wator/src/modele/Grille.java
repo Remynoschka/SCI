@@ -91,8 +91,9 @@ public class Grille extends Environnement {
     public void removeCreature(Creature creature) {
         removeAgent(creature);        
         creature.killOne();
-        creature = null;
         grille[creature.getX()][creature.getY()] = null;
+        creature = null;
+        
     }
 
     @Override
