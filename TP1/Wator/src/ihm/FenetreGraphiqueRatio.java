@@ -35,7 +35,7 @@ public class FenetreGraphiqueRatio extends ApplicationFrame implements Observer 
      * @param title the frame title.
      */
     public FenetreGraphiqueRatio(final String title) {
-        super(title);
+        super(title);        
         final TimeSeriesCollection dataset = new TimeSeriesCollection(this.ratio);
         final JFreeChart chart = createChart(dataset);
         chart.setBackgroundPaint(Color.LIGHT_GRAY);
@@ -46,6 +46,7 @@ public class FenetreGraphiqueRatio extends ApplicationFrame implements Observer 
         setContentPane(content);
         this.setSize(800, 600);
         this.setVisible(true);
+        
     }
     private JFreeChart createChart(final XYDataset dataset) {
         final JFreeChart result = ChartFactory.createTimeSeriesChart(

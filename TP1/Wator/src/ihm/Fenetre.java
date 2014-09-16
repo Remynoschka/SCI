@@ -121,12 +121,12 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
         NewGridMenu m = new NewGridMenu(this, true);
         m.setVisible(true);
         if (m.getReturnStatus() == NewGridMenu.RET_OK) {
-            System.out.println("Changement Grille");
             this.grille = new modele.Grille(m.getHauteur(), m.getLargeur());
             this.grille.generateRandomCreaturePlacement();
             this.grille.addObserver(this);
-            modele.Grille.GRILLE = this.grille;
             this.grillePanel.setGrille(grille);
+            modele.Grille.GRILLE = this.grille;
+            
             pack();
             
             repaint();

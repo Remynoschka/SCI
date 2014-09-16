@@ -30,7 +30,7 @@ public class Grille extends javax.swing.JPanel {
 
     public void setGrille(modele.Grille grille) {
         this.grille = grille;
-        setPreferredSize(new Dimension(grille.getH() * CASE_SIZE, grille.getW() * CASE_SIZE));
+        setPreferredSize(new Dimension(grille.getW() * CASE_SIZE,grille.getH() * CASE_SIZE));
         this.setSize(getPreferredSize());
     }
 

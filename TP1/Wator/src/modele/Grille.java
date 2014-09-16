@@ -17,7 +17,7 @@ public class Grille extends Environnement {
         super();
         this.h = h;
         this.w = w;
-        grille = new Creature[h][w];
+        grille = new Creature[w][h];
     }
 
     /**
@@ -89,11 +89,10 @@ public class Grille extends Environnement {
      * @param creature : la creature a retirer
      */
     public void removeCreature(Creature creature) {
-        removeAgent(creature);
-        grille[creature.getX()][creature.getY()] = null;
+        removeAgent(creature);        
         creature.killOne();
         creature = null;
-        
+        grille[creature.getX()][creature.getY()] = null;
     }
 
     @Override
@@ -154,10 +153,10 @@ public class Grille extends Environnement {
      */
     public void generateRandomCreaturePlacement() {
         Random alea = new Random();
-        for (int l = 0; l < w; l++) {
-            for (int c = 0; c < h; c++) {
+        for (int l = 0; l < h; l++) {
+            for (int c = 0; c < w; c++) {
                 if (alea.nextInt(10) < 7) {
-                    if (alea.nextInt(100) < 10) {
+                    if (alea.nextInt(100) < 5) {
                         addCreature(new Requin(), c, l);
                     } else {
                         addCreature(new Poisson(), c, l);

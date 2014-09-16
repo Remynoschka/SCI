@@ -36,6 +36,7 @@ public class FenetreGraphiquePopulation extends ApplicationFrame implements Obse
      */
     public FenetreGraphiquePopulation(final String title) {
         super(title);
+        setDefaultCloseOperation(ApplicationFrame.HIDE_ON_CLOSE);
         final TimeSeriesCollection dataset = new TimeSeriesCollection(this.poissons);
         dataset.addSeries(this.requins);
         final JFreeChart chart = createChart(dataset);
