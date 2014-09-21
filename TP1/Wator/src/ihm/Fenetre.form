@@ -11,10 +11,29 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="newGridMenuItem">
               <Properties>
+                <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
+                  <KeyStroke key="Shift+Ctrl+N"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nouvelle Grille"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newGridMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="speedMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modifier la vitesse"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="speedMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="seuilSatisfactionItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Modifier le seuil de Satisfaction"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="seuilSatisfactionItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -46,6 +65,14 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ratioMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="showSatisfactionMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Satisfaction"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="showSatisfactionMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -90,7 +117,7 @@
   <SubComponents>
     <Container class="ihm.Grille" name="grillePanel">
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ihm.Grille(grille)"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new ihm.Grille(modele.Grille.GRILLE)"/>
       </AuxValues>
 
       <Layout>

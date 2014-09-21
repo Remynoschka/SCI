@@ -4,11 +4,14 @@
  */
 package ihm;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  *
  * @author Remynoschka
  */
-public class PyramideAges extends javax.swing.JFrame {
+public class PyramideAges extends javax.swing.JFrame implements Observer{
 
     /**
      * Creates new form PyramideAges
@@ -60,4 +63,9 @@ public class PyramideAges extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private ihm.PyramidePanel pyramidePanel1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

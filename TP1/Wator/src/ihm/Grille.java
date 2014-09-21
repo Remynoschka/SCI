@@ -7,6 +7,7 @@ package ihm;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.List;
 import modele.Agent;
 import modele.Creature;
 
@@ -28,6 +29,10 @@ public class Grille extends javax.swing.JPanel {
         setPreferredSize(new Dimension(grille.getH() * CASE_SIZE, grille.getW() * CASE_SIZE));
     }
 
+    /**
+     * Changer la grille affichee
+     * @param grille : la nouvelle grille
+     */
     public void setGrille(modele.Grille grille) {
         this.grille = grille;
         setPreferredSize(new Dimension(grille.getW() * CASE_SIZE,grille.getH() * CASE_SIZE));
@@ -45,7 +50,8 @@ public class Grille extends javax.swing.JPanel {
             g.drawLine(c * CASE_SIZE, 0, c * CASE_SIZE, getY() + getHeight());
         }
         // Creatures
-        for (Agent a : grille.getAgents()) {
+        List<Agent> agents = grille.getAgents();
+        for (Agent a : agents) {
             switch (((Creature) a).getType()) {
                 case POISSON:
                     g.setColor(Color.CYAN);

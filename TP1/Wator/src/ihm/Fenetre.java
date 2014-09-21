@@ -6,6 +6,7 @@ package ihm;
 
 import java.util.Observable;
 import java.util.Observer;
+import modele.Main;
 
 /**
  *
@@ -34,14 +35,17 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        grillePanel = new ihm.Grille(grille);
+        grillePanel = new ihm.Grille(modele.Grille.GRILLE);
         jMenuBar1 = new javax.swing.JMenuBar();
         environnementMenu = new javax.swing.JMenu();
         newGridMenuItem = new javax.swing.JMenuItem();
+        speedMenuItem = new javax.swing.JMenuItem();
+        seuilSatisfactionItem = new javax.swing.JMenuItem();
         affichageMenu = new javax.swing.JMenu();
         pyramideMenuItem = new javax.swing.JMenuItem();
         graphePopMenuItem = new javax.swing.JMenuItem();
         ratioMenuItem = new javax.swing.JMenuItem();
+        showSatisfactionMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Poissons et Requins");
@@ -59,6 +63,7 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
 
         environnementMenu.setText("Environnement");
 
+        newGridMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
         newGridMenuItem.setText("Nouvelle Grille");
         newGridMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -66,6 +71,22 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
             }
         });
         environnementMenu.add(newGridMenuItem);
+
+        speedMenuItem.setText("Modifier la vitesse");
+        speedMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                speedMenuItemActionPerformed(evt);
+            }
+        });
+        environnementMenu.add(speedMenuItem);
+
+        seuilSatisfactionItem.setText("Modifier le seuil de Satisfaction");
+        seuilSatisfactionItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                seuilSatisfactionItemActionPerformed(evt);
+            }
+        });
+        environnementMenu.add(seuilSatisfactionItem);
 
         jMenuBar1.add(environnementMenu);
 
@@ -94,6 +115,14 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
             }
         });
         affichageMenu.add(ratioMenuItem);
+
+        showSatisfactionMenuItem.setText("Satisfaction");
+        showSatisfactionMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showSatisfactionMenuItemActionPerformed(evt);
+            }
+        });
+        affichageMenu.add(showSatisfactionMenuItem);
 
         jMenuBar1.add(affichageMenu);
 
@@ -141,6 +170,27 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
         modele.Grille.GRILLE.addObserver(new FenetreGraphiquePopulation("Population"));
     
     }//GEN-LAST:event_graphePopMenuItemActionPerformed
+
+    private void speedMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speedMenuItemActionPerformed
+        SetSpeedMenu m = new SetSpeedMenu(this, true);
+        m.setVisible(true);
+        if (m.getReturnStatus() == SetSpeedMenu.RET_OK){
+            Main.SPEED = m.getSpeed();
+        }
+    }//GEN-LAST:event_speedMenuItemActionPerformed
+
+    private void seuilSatisfactionItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seuilSatisfactionItemActionPerformed
+        SetSeuilSatisfactionMenu m = new SetSeuilSatisfactionMenu(this, true);
+        m.setVisible(true);
+        if (m.getReturnStatus() == SetSpeedMenu.RET_OK){
+            Main.SEUIL_SATISFACTION = m.getSeuil();
+        }
+    }//GEN-LAST:event_seuilSatisfactionItemActionPerformed
+
+    private void showSatisfactionMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showSatisfactionMenuItemActionPerformed
+        this.grille.addObserver(new SatisfactionView());
+    }//GEN-LAST:event_showSatisfactionMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu affichageMenu;
     private javax.swing.JMenu environnementMenu;
@@ -150,6 +200,9 @@ public class Fenetre extends javax.swing.JFrame implements Observer {
     private javax.swing.JMenuItem newGridMenuItem;
     private javax.swing.JMenuItem pyramideMenuItem;
     private javax.swing.JMenuItem ratioMenuItem;
+    private javax.swing.JMenuItem seuilSatisfactionItem;
+    private javax.swing.JMenuItem showSatisfactionMenuItem;
+    private javax.swing.JMenuItem speedMenuItem;
     // End of variables declaration//GEN-END:variables
 
     @Override

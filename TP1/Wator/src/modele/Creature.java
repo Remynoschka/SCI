@@ -86,4 +86,11 @@ public abstract class Creature extends Agent {
      * Reduit la population
      */
     public abstract void killOne();
+    
+    /**
+     * Met la population a 0
+     */
+    public abstract void resetPopulation();
+    
+    
 }
